@@ -1,42 +1,51 @@
-// import { Canvas } from "./canvas.js";
-import { initState, updateState } from "./src/state.js";
+import { initState, updateState, getState } from "./src/state.js";
 import GridLines from "./src/grid_lines.js";
-import CurrCell from "./src/curr_cell.js";
+import Pointer from "./src/pointer.js";
 
+// Init sidebar
+initSidebar();
+// Init state and the canvas
 const s = initState();
-const c = new GridLines();
+// Init grid
+const grid = new GridLines();
+// Init pointer
+new Pointer();
+// Draw grid lines
+grid.draw(s);
 
-new CurrCell();
+function initSidebar() {
+  const sideBar = document.getElementById("side-bar");
+  for (let c of sideBar.children) {
+    c.onclick = function () {
+      let sym;
+      switch (this.children[0].id) {
+        case "run":
+          const state = getState();
+          if (state.symbolList.length === 0) {
+            window.alert("Please place some symbols!");
+            break;
+          }
+          const res = state.symbolList[state.symbolList.length - 1].evaluate();
 
-c.draw(s);
-
-window.addEventListener("mousemove", (e) => {
-  updateState("MOUSE_MOVE", { mouseX: e.clientX, mouseY: e.clientY });
-});
-
-window.addEventListener("mousedown", (e) => {
-  let mouseBtn;
-  switch (e.button) {
-    case 0:
-      mouseBtn = "LEFT_CLICK";
-      break;
-    case 1:
-      mouseBtn = "WHEEL_CLICK";
-    case 2:
-      mouseBtn = "RIGHT_CLICK";
+          window.alert(`RESULT: ${res}`);
+          break;
+        case "sym-true":
+          sym = "TRUE";
+          break;
+        case "sym-false":
+          sym = "FALSE";
+          break;
+        case "sym-pipe":
+          sym = "PIPE";
+          break;
+        case "sym-var":
+          sym = "VAR";
+          break;
+        case "sym-erase":
+          sym = "ERASE";
+          break;
+      }
+      updateState("SET_SYM", { currentSymbol: sym });
+    };
   }
-
-  updateState("MOUSE_DOWN", { mouseDown: true, mouseBtn: mouseBtn });
-});
-
-window.addEventListener("mouseup", (_e) => {
-  updateState("MOUSE_DOWN", { mouseDown: false });
-});
-
-window.addEventListener("keydown", (e) => {
-  updateState("KEY_DOWN", { key: e.key.toLowerCase() });
-});
-
-window.addEventListener("keyup", (e) => {
-  updateState("KEY_UP", { key: e.key.toLowerCase() });
-});
+}

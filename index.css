@@ -4,53 +4,22 @@ html, body {
   width: 100%;
   height: 100vh;
 }
-#container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-#container canvas {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.tools {
-  position: absolute;
-  bottom: 20px;
-  border-radius: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 3px 12px 0 rgba(199, 199, 199, 0.61);
+#main {
   display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  background: #ffffff;
-}
-.tools [data-tool]:nth-child(1) {
-  margin-right: 5px;
 }
 
-.tools [data-tool] svg {
-  pointer-events: none;
+#side-bar{
+  flex: 0 0 10%;
 }
 
-.tools [data-tool] {
-  border-radius: 6px;
-  height: 50px;
-  width: 50px;
+.stick-sym-card {
   display: flex;
   justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all ease-in-out .2s;
-}
-.tools [data-tool].active {
-  background: #8b08f2;
-}
-.tools [data-tool].active svg {
-  fill: #fff;
+  padding: 1em;
+  font-weight:bolder;
+  font-style: bold;
+  font-size: 48px;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  margin: 0.5em;
 }

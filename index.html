@@ -5,23 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="index.css">
-    <title>HTML 5 Boilerplate</title>
+    <title>stick_lang</title>
   </head>
   <body style="margin: 0;">
-    <div id="container">
-      <canvas id="c"></canvas>
-      <canvas id="prototyping-space"></canvas>
-      <div class="tools">
-        <div data-tool="hand" class="active">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-index" viewBox="0 0 16 16">
-                <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435a4.9 4.9 0 0 1 .106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
-            </svg>
+    <div id="main">
+      <div id="side-bar">
+        <div class="stick-sym-card">
+          <div id="sym-true" class="stick-sym-literal">
+            ┣┛
+          </div>
         </div>
-        <div data-tool="cursor">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cursor" viewBox="0 0 16 16">
-                <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103zM2.25 8.184l3.897 1.67a.5.5 0 0 1 .262.263l1.67 3.897L12.743 3.52 2.25 8.184z"/>
-            </svg>
+        <div class="stick-sym-card">
+          <div id="sym-false" class="stick-sym-literal">
+            ┗┫
+          </div>
         </div>
+        <div class="stick-sym-card">
+          <div id="sym-var" class="stick-sym-literal">
+            ╬╬
+          </div>
+        </div>
+        <div class="stick-sym-card">
+          <div id="sym-pipe" class="stick-sym-literal">
+            ━
+          </div>
+        </div>
+        <div class="stick-sym-card">
+          <div id="run" class="stick-sym-literal">
+            🔴
+          </div>
+        </div>
+      </div>
+      <div id="canvas-container">
+        <canvas id="c"></canvas>
+        <canvas id="prototyping-space"></canvas>
+      </div>
     </div>
     </div>
     <script src="index.js" type="module" ></script>

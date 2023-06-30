@@ -1,25 +1,23 @@
 import GuiElement from "./gui_element.js";
 import { updateState } from "./state.js";
-import { CELL_SIZE } from "./constants.js";
+import { CELL_SIZE, GRID_LINE_COLOR } from "./constants.js";
 
 export default class GridLines extends GuiElement {
   constructor(x, y) {
     super();
     this.x = x;
     this.y = y;
-    this.color = "green";
   }
 
   render({ ctx, size }) {
     const space = CELL_SIZE;
-    // const size = getState("size");
     // top is the position where the first line should be drawn (it's this part that gives the scrolling illusion)
     // left is the position where the first line should be drawn
     const top = -size.track.top % space;
     const left = -size.track.left % space; // - space is used only to reverse the direction of the lines
 
     ctx.lineWidth = 1;
-    ctx.strokeStyle = "#ccc";
+    ctx.strokeStyle = GRID_LINE_COLOR;
 
     // clear the canvas
     ctx.clearRect(0, 0, size.width, size.height);
@@ -29,7 +27,7 @@ export default class GridLines extends GuiElement {
       ctx.beginPath();
       ctx.moveTo(0, i);
       ctx.lineTo(size.width, i);
-      ctx.strokeStyle = "#ccc";
+      ctx.strokeStyle = GRID_LINE_COLOR;
       ctx.stroke();
     }
 
@@ -38,7 +36,7 @@ export default class GridLines extends GuiElement {
       ctx.beginPath();
       ctx.moveTo(i, 0);
       ctx.lineTo(i, size.height);
-      ctx.strokeStyle = "#ccc";
+      ctx.strokeStyle = GRID_LINE_COLOR;
       ctx.stroke();
     }
   }
@@ -54,13 +52,11 @@ export default class GridLines extends GuiElement {
   }
 
   handelMouseScroll({ size, mouseX, mouseY, prevMouseX, prevMouseY }) {
-    // if the mouse is down and the tool is hand
-    // if (this.mouse.down && this.tool === "hand") {
     const xDistance = mouseX - prevMouseX;
     const yDistance = mouseY - prevMouseY;
     const newSize = { ...size };
 
-    // handel Y Scrolling
+    // handle Y Scrolling
     if (yDistance >= 0) {
       // Up
       if (size.top === 0) {
@@ -87,7 +83,7 @@ export default class GridLines extends GuiElement {
       newSize.track.top -= yDistance;
     }
 
-    // handel X Scrolling
+    // handle X Scrolling
     if (xDistance >= 0) {
       // Right
       if (size.left === 0) {
